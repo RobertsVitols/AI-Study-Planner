@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .study-plan, .history {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="display-4">AI Study Planner</h1>
+            <p class="lead">Create a personalized study plan for your exams</p>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert alert-danger mt-3">
+                    <ul>
+                        {% for category, message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="syllabus">Enter your subjects (comma-separated):</label>
+                <input type="text" class="form-control" id="syllabus" name="syllabus" required>
+            </div>
+            <div class="form-group mt-3">
+                <label for="deadlines">Enter your deadlines (comma-separated with dates):</label>
+                <input type="text" class="form-control" id="deadlines" name="deadlines" required>
+            </div>
+            <div class="form-group mt-3">
+                <label for="available_time">Enter how many hours you can study per day:</label>
+                <input type="number" class="form-control" id="available_time" name="available_time" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mt-4">Generate Study Plan</button>
+        </form>
+
+        {% if study_plan %}
+            <div class="study-plan">
+                <h2>Your Study Plan:</h2>
+                <div>{{ study_plan | safe }}</div>
+            </div>
+        {% endif %}
+
+        <button class="btn btn-secondary mt-4" onclick="toggleHistory()">Show History</button>
+
+        <div id="history-section" class="history hidden">
+            <h2>History</h2>
+            {% for entry in history %}
+                <div class="border rounded p-3 mb-3">
+                    <p><strong>You:</strong> Subjects: {{ entry.syllabus }}, Deadlines: {{ entry.deadlines }}, Study Time: {{ entry.available_time }} hours</p>
+                    <p><strong>AI:</strong> {{ entry.study_plan | safe }}</p>
+                    <small class="text-muted">{{ entry.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</small>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer class="footer text-center mt-5">
+        <p>&copy; 2025 AI Study Planner. All Rights Reserved. Roberts Vītols & Renārs Ričards Hartmanis</p>
+    </footer>
+
+    <script>
+        function toggleHistory() {
+            var historySection = document.getElementById("history-section");
+            if (historySection.classList.contains("hidden")) {
+                historySection.classList.remove("hidden");
+            } else {
+                historySection.classList.add("hidden");
+            }
+        }
+    </script>
+</body>
+</html>
