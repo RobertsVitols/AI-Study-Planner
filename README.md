@@ -19,7 +19,7 @@ AI Study Planner is a Flask-based web application that uses OpenAI's GPT model t
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/ai-study-planner.git
+git clone https://github.com/RobertsVitols/AI-Study-Planner.git
 cd ai-study-planner
 ```
 
