@@ -42,6 +42,7 @@ def generate_study_plan(syllabus, deadlines, available_time):
     I have the following deadlines: {deadlines}.
     I can study for {available_time} hours per day.
     Today's date and time is: {today}.
+    Do not generate tables in your response.
     Please generate a study plan that helps me prepare for my exams based on these details.
     """
 
