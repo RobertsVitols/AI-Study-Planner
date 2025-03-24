@@ -65,13 +65,16 @@ Will be added later...
 
 This project includes test cases to verify both the Flask app and the AI logic, including edge cases and failure scenarios.
 
-| **Test Name**                        | **Type**       | **What It Verifies**                                             |
-|-------------------------------------|----------------|------------------------------------------------------------------|
-| `test_home_page_loads`              | Flask route    | Checks if the homepage loads successfully                        |
-| `test_form_submission_valid`        | Flask route    | Valid form data submission returns a generated study plan        |
-| `test_generate_study_plan_normal`   | AI Logic       | Standard input generates a correct response                      |
-| `test_generate_study_plan_empty_input` | Edge case   | Ensures AI responds appropriately to empty inputs                |
-| `test_generate_study_plan_api_failure` | Failure     | Simulates API failure and tests system's error-handling behavior |
+### ✅ Test Cases
+
+| **Test Name**                     | **Type**       | **What It Verifies**                                               |
+|-----------------------------------|--------------|------------------------------------------------------------------|
+| `test_generate_study_plan`       | Flask route  | Ensures that a valid form submission generates a study plan and saves it to the database |
+| `test_empty_input`               | Edge case    | Checks that empty form fields trigger an error message          |
+| `test_incorrect_data_format`     | Edge case    | Verifies that incorrect deadline formats return an error        |
+| `test_history_section`           | Flask route  | Ensures that study plan history is displayed correctly          |
+| `test_empty_ai_response`         | AI Logic     | Simulates an empty AI response and verifies error handling      |
+| `test_sqlite_database`           | Database     | Confirms that study plans are correctly stored and retrieved from the database |
 
 To run the test cases:
 ```bash
