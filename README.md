@@ -49,7 +49,7 @@ http://127.0.0.1:5000
 ```
 
 ## 🖼 Screenshots
-Will be added later...  
+![alt text](https://github.com/RobertsVitols/AI-Study-Planner/blob/main/images/screenshot.png?raw=true)
 
 ## 📚 Libraries Used
 - Flask – Web framework
@@ -59,7 +59,7 @@ Will be added later...
 - Bootstrap 5 – Frontend styling and layout
 
 ## 🏗 Architecture Diagram
-Will be added later...  
+![alt text](https://github.com/RobertsVitols/AI-Study-Planner/blob/main/images/architecture_diagram.png?raw=true)
 
 ## 🧪 Test Cases Overview
 
